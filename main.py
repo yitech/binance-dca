@@ -17,6 +17,7 @@ def safe_execute(action, *args, **kwargs):
         logging.error(f"An unexpected error occurred: {e}")
     return None
 
+
 if __name__ == '__main__':
     api_key = os.getenv('API_KEY')
     api_secret = os.getenv('API_SECRET')
