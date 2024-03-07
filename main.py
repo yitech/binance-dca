@@ -41,6 +41,7 @@ if __name__ == '__main__':
     logging.info(f"Account Balance USDT = {account_usdt}, ADA = {account_ada}")
 
     for _ in range(total_invest_usdt // invest_amount):
+        time.sleep(invest_interval)
         res = safe_execute(client.order_market_buy, symbol='ADAUSDT', quoteOrderQty=invest_amount)
         if res:
             for record in res['fills']:
@@ -51,4 +52,4 @@ if __name__ == '__main__':
                 logging.info(f"Buy {qty} ADAUSDT@{exec_price}/ commission: {commission} {commission_asset}")
         else:
             logging.error("Failed to execute order. Skipping this cycle.")
-        time.sleep(invest_interval)
+    logging.info('DCA ended')
